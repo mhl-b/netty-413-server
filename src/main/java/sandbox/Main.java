@@ -52,7 +52,7 @@ class HttpMsgHandler extends SimpleChannelInboundHandler<HttpObject> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
         if (msg instanceof HttpRequest req) {
-            System.out.format("request method=%s uri=%s len=%d", req.method(), req.uri(),
+            System.out.format("request method=%s uri=%s len=%d\n", req.method(), req.uri(),
                               HttpUtil.getContentLength(req, 0));
             ctx.writeAndFlush(TOO_LARGE_CLOSE).addListener(ChannelFutureListener.CLOSE);
         }
